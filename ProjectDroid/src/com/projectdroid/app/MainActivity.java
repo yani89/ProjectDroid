@@ -23,29 +23,6 @@ public class MainActivity extends Activity implements OnClickListener{
 		//load activity layout
 		setContentView(R.layout.activity_main);
 		
-//		button1 = (Button)findViewById(R.id.Button1) ;
-//		button1.setOnClickListener(new View.OnClickListener() { 
-//            @Override
-//            public void onClick(View v) {
-//                 Message("I'm button1");
-//            }
-//          });
-//		button2 = (Button)findViewById(R.id.Button2);
-//		button2.setOnClickListener(new View.OnClickListener(){
-//			@Override
-//			public void onClick(View v){
-//				Message("I'm button2");
-//			}
-//		});
-//		button3 = (Button)findViewById(R.id.Button3);
-//		button3.setOnClickListener(new View.OnClickListener(){
-//			@Override
-//			public void onClick(View v){
-//				Message("I'm button3");
-//			}
-//		});
-		
-
 		//activated button controll
  	}
 
