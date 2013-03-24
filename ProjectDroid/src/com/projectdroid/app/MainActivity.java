@@ -1,55 +1,30 @@
 package com.projectdroid.app;
 
-import android.net.Uri;
-import android.os.Bundle;
-import android.app.Activity;
+
+import android.app.TabActivity;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
+import android.os.Bundle;
+import android.widget.TabHost;
 
-public class MainActivity extends Activity implements OnClickListener{
-	Button button1;
-	Button button2;
-	Button button3;
+
+public class MainActivity extends TabActivity{
 	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		 super.onCreate(savedInstanceState);
+	     setContentView(R.layout.tabmenu);
+	     TabHost tabHost = getTabHost();      
+	       
+	     tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("Home").setContent(new Intent(this,HomeActivity.class)));
+	       
+	     tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("Setting").setContent(new Intent(this, OptionsActivity.class)));
+	     tabHost.setCurrentTab(1); 
 		//load activity layout
-		setContentView(R.layout.activity_main);
-		
-		//activated button controll
+		//setContentView(R.layout.activity_main);
+
  	}
 
-	public void Message(String Msg){
-		 Toast.makeText(MainActivity.this, Msg.toString(), Toast.LENGTH_SHORT).show();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		switch(v.getId()){
-			case R.id.Button1:
-				Message("Im Button1");
-			case R.id.Button2:
-				Message("Im Button2");
-			case R.id.Button3:
-				Message("Im Button3");
-			Default:
-				System.err.println("null");
-		}
-	}
+	
 
 }

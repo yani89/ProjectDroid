@@ -7,5 +7,8 @@
     <string name="Button1">Button1</string>
     <string name="Button2">Button2</string>
     <string name="Button3">Button3</string>
+    <string name="buttonadd">Setting</string>
+    <string name="IpAddress">ipaddress</string>
+    <string name="List">ListNegara</string>
 
 </resources>
