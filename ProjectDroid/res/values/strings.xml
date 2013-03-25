@@ -10,5 +10,10 @@
     <string name="buttonadd">Setting</string>
     <string name="IpAddress">ipaddress</string>
     <string name="List">ListNegara</string>
+    <string-array name="CountryArray">
+        <item >Indonesia</item>
+        <item >Myanmar</item>
+        <item >Chinese</item>
+    </string-array>
 
 </resources>
