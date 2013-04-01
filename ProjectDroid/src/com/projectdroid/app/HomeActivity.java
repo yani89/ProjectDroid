@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class HomeActivity extends Activity implements OnClickListener{
-	Button button1;
-	Button button2;
-	Button button3;
+	private Button button1;
+	private Button button2;
+	private Button button3;
 	
 
 	@Override
@@ -20,21 +20,27 @@ public class HomeActivity extends Activity implements OnClickListener{
 		
 		//load activity layout
 		setContentView(R.layout.activity_main);
-
+		listenerButton();
  	}
 
 	public void Message(String Msg){
 		 Toast.makeText(HomeActivity.this, Msg.toString(), Toast.LENGTH_SHORT).show();
 	}
 
-	public boolean onCreateOptionsMenu(Menu menu) {
-		//call the base class to include system menus 
-		super.onCreateOptionsMenu(menu);
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		//call the base class to include system menus 
+//		super.onCreateOptionsMenu(menu);
+//		return true;
+//	}
+
+	public void listenerButton(){
+		button1 = (Button) findViewById(R.id.Button1);
+		button2 = (Button) findViewById(R.id.Button2);
+		button3 = (Button) findViewById(R.id.Button3);
 		
-
-		return true;
+		
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
