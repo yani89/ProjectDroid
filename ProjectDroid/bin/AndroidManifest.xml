@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
+    	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -25,5 +26,5 @@
         <activity android:name=".OptionsActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
     </application>
-	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
 </manifest>

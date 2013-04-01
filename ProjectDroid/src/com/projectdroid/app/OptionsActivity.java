@@ -25,10 +25,22 @@ public class OptionsActivity extends Activity {
 	private EditText edittext;
 	
 	/* soap */
-	private static String SOAP_ACTION1 = "DefaultNamespace";
-	private static String NAMESPACE = "";
-	private static String METHOD_NAME1="HelloWorld";
-	private static String URL = "http://localhost:8080/SOAPHelloWorld/HelloWorld?wsdl";
+//	private static String SOAP_ACTION1 = "DefaultNamespace";
+//	private static String NAMESPACE = "http://webservice.javapapers.com/";
+//	private static String METHOD_NAME1="HelloWorld";
+//	private static String URL = "http://localhost:8080/SOAPHelloWorld/HelloWorld?wsdl";
+	
+	private static String SOAP_ACTION1 = "http://tempuri.org/FahrenheitToCelsius";
+
+    private static String SOAP_ACTION2 = "http://tempuri.org/CelsiusToFahrenheit";
+
+    private static String NAMESPACE = "http://tempuri.org/";
+
+    private static String METHOD_NAME1 = "FahrenheitToCelsius";
+
+    private static String METHOD_NAME2 = "CelsiusToFahrenheit";
+
+    private static String URL = "http://www.w3schools.com/webservices/tempconvert.asmx?WSDL";
 	
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,26 +67,68 @@ public class OptionsActivity extends Activity {
 		btnSubmit.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v){
-				SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME1);
+				SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME1);       
+
+                
+
+                //Use this to add parameters
+
+                request.addProperty("Fahrenheit",edittext.getText().toString());
+
+               
+
+                //Declare the version of the SOAP request
+
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+               
+
+                envelope.setOutputSoapObject(request);
+
+                envelope.dotNet = true;
+				 try {
+
+                     HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+                    
+
+                     //this is the actual part that will call the webservice
+
+                     androidHttpTransport.call(SOAP_ACTION1, envelope);
+
+                    
+
+                     // Get the SoapResult from the envelope body.
+
+                     SoapObject result = (SoapObject)envelope.bodyIn;
+
+
+
+                     if(result != null)
+
+                     {
+
+                           //Get the first property and change the label text
+
+                           edittext.setText(result.getProperty(0).toString());
+
+                     }
+
+                     else
+
+                     {
+
+                           Toast.makeText(getApplicationContext(), "No Response",Toast.LENGTH_LONG).show();
+
+                     }
+
+               } catch (Exception e) {
+
+                     e.printStackTrace();
+
+               }
 				
-				request.addProperty("HelloWorld",edittext.getText().toString());
-				
-				SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-				
-				envelope.setOutputSoapObject(request);
-				envelope.dotNet = false;
-				
-				HttpTransportSE test = new HttpTransportSE(URL);
-				
-				try{
-					test.call(SOAP_ACTION1, envelope);
-					
-					SoapPrimitive sp = (SoapPrimitive) envelope.getResponse();
-					edittext.setText("Msg from service "+sp);
-				}catch(Exception e){
-					
-					e.printStackTrace();
-				}
+
 				Toast.makeText(OptionsActivity.this,
 				"\nSpinner 1: " + String.valueOf(spinner1.getSelectedItem())+ 
 				"\nSpinner 1: " + String.valueOf(edittext.getText()), Toast.LENGTH_SHORT).show();
