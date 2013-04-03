@@ -4,6 +4,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="lib" path="C:/Users/Harddisk-Yanipra/Downloads/Compressed/AndroidWebService/lib/ksoap2-android-assembly-2.5.8-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="libs/ksoap2-android-assembly-2.6.1-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
